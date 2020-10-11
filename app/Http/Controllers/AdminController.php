@@ -184,4 +184,8 @@ class AdminController extends Controller
             return 'Error';
         }
     }
+    
+    // function login(Request $request) {
+    //     if(Auth::attempt())
+    // }
 }

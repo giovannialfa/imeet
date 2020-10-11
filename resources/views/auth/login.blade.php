@@ -28,13 +28,13 @@
 
 
 <body class="text-center" style="background: #fafbfd;">
-    <div class="cover-container centervh">
+    <div class="cover-container centervh" >
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4 offset-md-4">
-                    <div class="welcome align-item-center mb-5" >WELCOME!</div>
+                <div class="col-md-4 offset-md-4 login-section">
+                    <div class="welcome align-item-center mb-5">Welcome!</div>
 
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('authenticate') }}">
                         @csrf
 
                         <div class="form-group row align-item-center" style="border-radius: 4px;">
@@ -46,8 +46,8 @@
 
 
                             <div class="col-md-10 align-item-center">
-                                <label for="inputAdminId" class="sr-only">{{ __('AdminId Address') }}</label>
-                                <input id="inputAdminId" type="text" class="form-control @error('adminId') is-invalid @enderror" placeholder="AdminId" name="adminId" value="{{ old('adminId') }}" required autocomplete="adminId" autofocus>
+                                <label for="adminId" class="sr-only">{{ __('AdminId Address') }}</label>
+                                <input id="adminId" type="text" class="form-control @error('adminId') is-invalid @enderror" placeholder="AdminId" name="adminId" value="{{ old('adminId') }}" required autocomplete="adminId" autofocus>
 
                                 @error('adminId')
                                 <span class="invalid-feedback" role="alert">

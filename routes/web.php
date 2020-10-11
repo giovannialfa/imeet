@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,3 +52,4 @@ Route::get('/chat', 'HomeController@chat')->name('chat');
 Route::get('/guestroom', 'HomeController@guestroom')->name('guestroom');
 
 // Route::put('/AdminUpdate', 'AdminController@AdminUpdate')->name('AdminUpdate');
+Route::post('authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
