@@ -35,7 +35,8 @@
                     <div class="welcome align-item-center mb-5" >WELCOME!</div>
 
                     <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                        
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group row align-item-center" style="border-radius: 4px;">
                             <div class="col-md-2">
