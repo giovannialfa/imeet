@@ -1,0 +1,213 @@
+html,
+body {
+    height: 100%;
+    background-color: #fafbfd;
+}
+/* body {
+    display: -ms-flexbox;
+    display: flex;
+    color: #fff;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+} */
+.cover-container {
+    width: 100%;
+}
+
+.centervh {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.welcome {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    color: #514b63;
+}
+
+/*
+ * Header
+ */
+
+.masthead-brand {
+    margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    border-bottom: 0.25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+    border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+    margin-left: 1rem;
+}
+
+.nav-masthead .active {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+    .masthead-brand {
+        float: left;
+    }
+
+    .nav-masthead {
+        float: right;
+    }
+}
+
+/* Dashboard Page */
+.title-content {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    color: #514b63;
+}
+
+.titletable {
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 600;
+    text-align: left;
+}
+
+.chatting-room {
+    width: 100%;
+    height: 34em;
+    background-color: #FAFAFA;
+}
+
+.list-user {
+    width: 100%;
+    height: 40em;
+}
+
+.chat-list{
+    border: none;
+}
+
+.chat-list-image{
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+}
+
+.chat-list-title {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    color: #514b63;
+    margin-left: 1em;
+    font-size: 1em;
+}
+
+.chat-list-subtitle {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    color: #514b63;
+    margin-left: 1em;
+    font-size: 0.83em;
+}
+
+.chatting-time {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    color: #b0b0b0;
+    letter-spacing: 0.01em;
+}
+
+.chatting-content-left {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    color: #514b63;
+    letter-spacing: 0.01em;
+    background: #ffffff;
+    border-radius: 8px 8px 0px 8px;
+    letter-spacing: 0.01em;
+    max-width: 70%;
+    text-align: right;
+    background: #FFFFFF;
+}
+
+.chatting-content-right {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: 0.01em;
+    color: #514b63;
+    border-radius: 8px 8px 0px 8px;
+    max-width: 70%;
+    text-align: left;
+    background: #A7E9AF;
+}
+.chatting-header {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.01em;
+    color: #514b63;
+}
+
+.chatting-room {
+    background: #fafafa;
+}
+
+.header-guest {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: #514b63;
+    margin-left: 3em;
+    margin-top: 2em;
+}
+
+.form-modal {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #485565;
+}
+.chatting-icon-send {
+    color: #b0b0b0;
+    align-items: center;
+}
