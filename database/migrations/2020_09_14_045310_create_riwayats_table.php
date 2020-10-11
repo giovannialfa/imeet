@@ -14,8 +14,8 @@ class CreateRiwayatsTable extends Migration
     public function up()
     {
         Schema::create('riwayats', function (Blueprint $table) {
-            $table->increments('id');
-            $table->increments('guestid');
+            $table->id()->autoIncrement();
+            $table->string('guestid');
             $table->dateTime('created_at');
             $table->string('Type',10);
             $table->string('fullname', 30);
