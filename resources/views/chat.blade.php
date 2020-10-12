@@ -35,8 +35,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="chat-room mr-3" style="flex: 6; box-shadow: 1px 0px 4px #E9E9E9; border-radius:1em;">
-                    <div class="d-flex flex-column white-bg" style="border-radius:1em;">
+                <div class="chat-room mr-3 white-bg" style="flex: 6; box-shadow: 1px 0px 4px #E9E9E9; border-radius:1em;" id="chatroom">
+                    <!-- <div class="d-flex flex-column white-bg" id="chat_room" style="border-radius:1em;min-height:83.5vh;">
                         <div class="d-flex justify-content-start p-3 chatting-header" style="height: 10vh;">
                             <div style="flex: 1;">
                                 <img class="chat-list-image" id="chat_guest_image" src="" alt="">
@@ -45,13 +45,9 @@
                                 <div class="chat-list-title" id="chat_guest_fullname"></div>
                             </div>
                         </div>
-                        <div></div>
                         <div id="chatting_room" class="chatting-room overflow-auto p-2">
                         </div>
                         <div class=" chatting-input" style="border-radius:1em;">
-                            <!-- <form class="align-self-center form-group has-send send-message">
-                                <input class="form-control form-control-lg pl-5 custom-input" type="text" name="host" id="host" placeholder="Tulis Pesan disini...">
-                            </form> -->
                             <div class="d-flex justify-content-between  p-2">
                                 <textarea type="text" class="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="message" placeholder="Tulis Pesan disini..." maxlength="300" style="flex:11; border:none; outline:none; resize:none;" autocomplete="off"></textarea>
                                 <div class="input-group-prepend justify-content-center" style="flex: 1; align-items:center;">
@@ -61,7 +57,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    <img style="margin-top:40%;margin-left:20%;margin-right:20%;" src="asset/icon/ic_logo.png" width="60%">
                 </div>
             </div>
         </div>
@@ -98,6 +95,7 @@
 
     window.onload = function() {
         window.localStorage.clear();
+        // document.getElementById('chat_room').innerHTML = ''
     }
 
     function setBuildingCode($building) {
@@ -127,7 +125,34 @@
         return buildingCode;
     }
 
+    function CreateChatRoom() {
+        var chatroom = '<div class="d-flex flex-column white-bg" id="chat_room" style="border-radius:1em;min-height:83.5vh;">';
+        chatroom += '<div class="d-flex justify-content-start p-3 chatting-header" style="height: 10vh;">';
+        chatroom += '<div style="flex: 1;">';
+        chatroom += '<img class="chat-list-image" id="chat_guest_image" src="" alt="">';
+        chatroom += '</div>';
+        chatroom += '<div class="" style="flex: 10;">';
+        chatroom += '<div class="chat-list-title" id="chat_guest_fullname"></div>';
+        chatroom += '</div>';
+        chatroom += '</div>';
+        chatroom += '<div id="chatting_room" class="chatting-room overflow-auto p-2">';
+        chatroom += '</div>';
+        chatroom += '<div class=" chatting-input" style="border-radius:1em;">';
+        chatroom += '<div class="d-flex justify-content-between  p-2">';
+        chatroom += '<textarea type="text" class="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="message" placeholder="Tulis Pesan disini..." maxlength="300" style="flex:11; border:none; outline:none; resize:none;" autocomplete="off"></textarea>';
+        chatroom += '<div class="input-group-prepend justify-content-center" style="flex: 1; align-items:center;">';
+        chatroom += "<div class='' id='inputGroup-sizing-default' onclick='sendMessage();'>";
+        chatroom += '<x-feathericon-send class="chatting-icon-send" />';
+        chatroom += '</div>';
+        chatroom += '</div>';
+        chatroom += '</div>';
+        chatroom += '</div>';
+        chatroom += '</div>';
+        document.getElementById('chatroom').innerHTML = chatroom;
+    }
+
     function showChatroom($guestFullname, $guestImageUrl, $guestId, $guestHostId, $building) {
+        CreateChatRoom();
         if (localStorage.getItem("prevChatroomGuestId") != null && localStorage.getItem("prevChatroomGuestHost") != null) {
             document.getElementById(localStorage.getItem("prevChatroomGuestId")).style.backgroundColor = "#FFFFFF";
         }
@@ -264,8 +289,9 @@
         return hours + ":" + minutes;
     }
 
-    function sendMessage($building) {
+    function sendMessage() {
         const timestamp = Date.now().toString();
+        $building = localStorage.getItem('building');
         var buildingCode;
         buildingCode = setBuildingCode($building);
         var guestId = localStorage.getItem('prevChatroomGuestId');

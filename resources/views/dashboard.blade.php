@@ -214,12 +214,12 @@
                             <tbody>
                                 @foreach($guests as $guest)
                                 <tr>
-                                    <th scope="row">{{$guest->id}}</th>
+                                    <th scope="row">{{ $loop->index + 1 }}</th>
                                     <td>{{$guest->fullname}}</td>
                                     <td>{{$guest->type}}</td>
                                     <td>{{$guest->email}}</td>
                                     <td>
-                                        @if($guest->status =='pending')
+                                        @if($guest->status =='Pending')
 
                                         {{ csrf_field() }}
                                         {{ method_field('PUT') }}

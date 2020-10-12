@@ -46,7 +46,7 @@
                 <tbody>
                     @foreach ($riwayats as $riwayat)
                     <tr>
-                        <td>{{$riwayat->id}}</td>
+                        <td>{{ $loop->index + 1 }}</td>
                         <td>{{$riwayat->Tanggal}}</td>
                         <td>{{$riwayat->Nama}}</td>
                         <td>{{$riwayat->Tipe}}</td>

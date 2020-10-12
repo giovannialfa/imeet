@@ -2,11 +2,12 @@
 
 @section('content')
 <style>
-    .page-link{
+    .page-link {
         color: #44BBA0;
         background: #FFFFFF;
         border-color: #dee2e6
     }
+
     .page-item.active .page-link {
         z-index: 3;
         color: #44BBA0;
@@ -24,7 +25,7 @@
             <div class="d-flex justify-content-between ml-4 mt-3">
                 <div class="mr-3" style="flex: 8;border-radius: 1em;" style="box-shadow: 0px 2px 15px rgba(221, 221, 221, 0.15);">
                     <div class="d-flex flex-column white-bg p-3">
-                        <table class="table table-hover table-striped mt-3" id="visitor_today_table" >
+                        <table class="table table-hover table-striped mt-3" id="visitor_today_table">
                             <thead>
                                 <tr style="width: 100%;">
                                     <th scope="col">NO</th>
@@ -40,8 +41,8 @@
                             <tbody>
                                 @foreach($guests as $guest)
                                 <tr>
-                                    <th scope="row">{{$guest->id}}</th>
-                                    <td>{{$guest->id}}</td>
+                                    <th scope="row">{{ $loop->index + 1 }}</th>
+                                    <td>{{$guest->created_at}}</td>
                                     <td>{{$guest->fullname}}</td>
                                     <td>{{$guest->type}}</td>
                                     <td>{{$guest->email}}</td>

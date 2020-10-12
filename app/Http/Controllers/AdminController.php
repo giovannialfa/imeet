@@ -18,8 +18,8 @@ class AdminController extends Controller
     public function index()
     {
 
-        $adms = Admin::all();
-        return view('admin.admin')->with('adms',$adms);
+        $adms = Admin::where('status', 'normal')->get();
+        return view('admin.admin')->with('adms', $adms);
         // $admins = Admin::where('status', 'normal')->get();
         // $currentAdmin = Admin::where('id', Auth::id())->get();
         // return view('admin.admin', ['admins' => $admins, 'currentAdmin' => $currentAdmin]);
@@ -44,7 +44,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $adms = Admin::where('status', 'normal')->get();
-        $this->validate($request,[
+        $this->validate($request, [
             'fullname' => 'required',
             'adminId' => 'required',
             'password' => 'required',
@@ -58,10 +58,10 @@ class AdminController extends Controller
         $adms->building = 'Graha';
         $adms->status = 'normal';
 
-        
+
         $adms->save();
 
-        return redirect('/admin')->with('success','Data Saved');
+        return redirect('/admin')->with('success', 'Data Saved');
 
         // $output = '';
         // $validator = Validator::make($request->all(), [
@@ -119,7 +119,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'fullname' => 'required',
             'adminId' => 'required',
             'password' => 'required',
@@ -133,13 +133,13 @@ class AdminController extends Controller
         $adms->building = 'Graha';
         $adms->status = 'normal';
 
-        
+
         $adms->save();
 
-        return redirect('/admin')->with('success','Data Updated');
-        
-        
-        
+        return redirect('/admin')->with('success', 'Data Updated');
+
+
+
         // $admin = Admin::find($id);
 
         // // $admin->adminFullname = $request->input('fullname');
@@ -162,12 +162,13 @@ class AdminController extends Controller
         $adms = Admin::find($id);
         $adms->delete();
 
-        
-        return redirect('/admin')->with('success','Data Deleted');
+
+        return redirect('/admin')->with('success', 'Data Deleted');
     }
 
-    function AdminUpdate(Request $request) {
-        $admin = Admin::where('id' ,$request->id);
+    function AdminUpdate(Request $request)
+    {
+        $admin = Admin::where('id', $request->id);
 
         // $admin->adminFullname = $request->input('fullname');
         // $admin->adminId = $request->input('adminId');
@@ -179,12 +180,11 @@ class AdminController extends Controller
             // 'fullname' => $request->fullname, 'adminId' => $request->adminId, 'password' => $request->password
             $updated = $admin->fill($request->all())->save();
             return 'OK';
-        }
-        else {
+        } else {
             return 'Error';
         }
     }
-    
+
     // function login(Request $request) {
     //     if(Auth::attempt())
     // }

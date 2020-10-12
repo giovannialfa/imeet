@@ -21,6 +21,10 @@
 
 .sidebar-row {
     background: rgba(255, 255, 255, 0.1);
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .white-bg {

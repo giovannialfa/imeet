@@ -16,21 +16,21 @@
     </div>
 </div>
 /#sidebar-wrapper -->
-<div class="d-flex flex-column white-bg pl-4 pr-4 sidebar-row "  style="height: calc(100vh - 80px);">
-    <div class="d-flex flex-column" style="min-height: 100%;">
+<div class="d-flex flex-column white-bg pl-4 pr-4 sidebar-row " style="height: calc(100vh);">
+    <div class="d-flex flex-column" style="height:100vh;">
         <div class="row pl-2 pr-2 pb-3 mt-3">
             <div class="header-part white-bg pb-5 pl-4 pr-5 pt-2">
                 <img src="{{ asset('asset/icon/ic_logo.png') }}" onclick="homePage()" style="cursor: pointer;" alt="" height="25rem">
             </div>
         </div>
-            <div class="row pl-2 pr-2 pt-3 pb-3 mt-3" onclick="homePage()" style="cursor: pointer;" id="sidebar_menu">
-                <div class="col-md-3">
-                    <x-feathericon-database class="sidebar-icon" />
-                </div>
-                <div class="col-md-5 sidebar-text">
-                    Beranda
-                </div>
+        <div class="row pl-2 pr-2 pt-3 pb-3 mt-3" onclick="homePage()" style="cursor: pointer;" id="sidebar_menu">
+            <div class="col-md-3">
+                <x-feathericon-database class="sidebar-icon" />
             </div>
+            <div class="col-md-5 sidebar-text">
+                Beranda
+            </div>
+        </div>
         <div class="row pl-2 pr-2 pt-3 pb-3 mt-3" onclick="guestPage()" style="cursor: pointer;" id="sidebar_menu">
             <div class="col-md-3">
                 <x-feathericon-archive class="sidebar-icon" />
@@ -39,14 +39,16 @@
                 Riwayat
             </div>
         </div>
-            <div class="row pl-2 pr-2 pt-3 pb-3 mt-3" onclick="chatPage();" style="cursor: pointer;" id="sidebar_menu">
-                <div class="col-md-3">
-                    <x-feathericon-message-square class="sidebar-icon" />
-                </div>
-                <div class="col-md-5 sidebar-text">
-                    Chat
-                </div>
+        <div class="row pl-2 pr-2 pt-3 pb-3 mt-3" onclick="chatPage();" style="cursor: pointer;" id="sidebar_menu">
+            <div class="col-md-3">
+                <x-feathericon-message-square class="sidebar-icon" />
             </div>
+            <div class="col-md-5 sidebar-text">
+                Chat
+            </div>
+        </div>
+
+        @if(Auth::user()->status == 'super')
         <div class="row pl-2 pr-2 pt-3 pb-3 mt-3" onclick="adminPage();" style="cursor: pointer;" id="sidebar_menu">
             <div class="col-md-3">
                 <x-feathericon-users class="sidebar-icon" />
@@ -55,6 +57,7 @@
                 Admin
             </div>
         </div>
+        @endif
         <div class="row pl-2 pr-2 pt-3 pb-3 mb-2 mt-auto" onclick="logoutPage();" style="cursor: pointer;">
             <div class="col-md-3">
                 <x-feathericon-log-out class="sidebar-icon-logout" />
@@ -81,7 +84,7 @@
     function homePage() {
         window.location.href = "{{ route('home') }}"
     }
-    
+
     function chatPage() {
         window.location.href = "{{ route ('chat') }}"
     }

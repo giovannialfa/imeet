@@ -156,7 +156,7 @@
                                         <tbody>
                                             @foreach($adms as $admin)
                                             <tr>
-                                                <th scope="d-none">{{ $admin->id }}</th>
+                                                <th scope="d-none">{{ $loop->index + 1 }}</th>
                                                 <td>{{ $admin->fullname }}</td>
                                                 <td>{{ $admin->adminId }}</td>
                                                 <td>{{ $admin->password }}</td>

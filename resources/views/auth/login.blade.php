@@ -7,6 +7,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 
     <style>
         .button {
@@ -26,9 +36,76 @@
     </style>
 </head>
 
+<body>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="POST" action="{{ route('authenticate') }}">
+                    @csrf
+                    <span class="login100-form-logo">
+                        <!-- <i class="zmdi zmdi-landscape"></i> -->
+                        <img class="zmdi zmdi-landscape" src="asset/icon/pure_logo.png" alt="">
+                    </span>
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Welcome!
+                    </span>
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="adminId" placeholder="Admin ID">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+                    <div class="text-center p-t-90">
+                        <!-- <a class="txt1" href="#">
+                            Forgot Password?
+                        </a> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="dropDownSelect1"></div>
 
-<body class="text-center" style="background: #fafbfd;">
-    <div class="cover-container centervh" >
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="vendor/select2/select2.min.js"></script>
+
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+
+
+</body>
+<!-- <body class="text-center" style="background: #fafbfd;">
+    <div class="cover-container centervh">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 offset-md-4 login-section">
@@ -36,7 +113,12 @@
 
                     <form method="POST" action="{{ route('authenticate') }}">
                         @csrf
-
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
                         <div class="form-group row align-item-center" style="border-radius: 4px;">
                             <div class="col-md-2">
                                 <svg width="40px" height="40px" viewBox="0 0 16 16" class="bi bi-person" fill="black" xmlns="http://www.w3.org/2000/svg">
@@ -74,21 +156,21 @@
                                 @enderror
                             </div>
                         </div>
-                            <div class="col align-self-center">
-                                <button class="button" type="submit">
-                                    {{ __('Login') }}
-                                </button>
-                            </div>
-                            <!-- <div>
+                        <div class="col align-self-center">
+                            <button class="button" type="submit">
+                                {{ __('Login') }}
+                            </button>
+                        </div>
+                        <!-- <div>
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                                 @endif
                             </div> -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+</form>
+</div>
+</div>
+</div>
+</div>
+</body> -->

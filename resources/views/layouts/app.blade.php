@@ -15,8 +15,8 @@
     <!-- provide the csrf token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-   <!-- open sans -->
-   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <!-- open sans -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -33,9 +33,10 @@
             }
         }
 
-       html, body {
-           font-family: "Open Sans";
-       }
+        html,
+        body {
+            font-family: "Open Sans";
+        }
     </style>
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -44,7 +45,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 </head>
 
-<body class="text-center">
+<body class="text-center container-custom" style="background-image: url('images/bg-01.jpg');">
 
     @yield('content')
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
