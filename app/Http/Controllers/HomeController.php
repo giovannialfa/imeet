@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Chat;
 use App\Guest;
 use App\User;
+use Carbon\Carbon;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
@@ -89,7 +90,8 @@ class HomeController extends Controller
 
     public function chat()
     {
-        $guests = Guest::all();
+        $today = Carbon::now()->timezone('Asia/Jakarta')->format('Y-m-d');
+        $guests = Guest::where('created_at', 'LIKE', $today . '%')->get();
         return view('chat', ['guests' => $guests]);
     }
 
@@ -135,9 +137,10 @@ class HomeController extends Controller
             'Content-Type: Application/json'
         ];
 
-        $msg = [
-            'title' => 'Testing Notification',
-            'body' => 'Testing Notification from Body'
+        $data = [
+            'buildingCode' => $request->buildingCode,
+            'guestId' => $request->guestId,
+            'type' => 'NewMessage',
         ];
 
         $payload = [
@@ -146,7 +149,7 @@ class HomeController extends Controller
                 "body" => $request->message,
                 "title" => $request->title
             ],
-            'data' => $msg
+            'data' => $data
         ];
 
 

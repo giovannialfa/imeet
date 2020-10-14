@@ -1,0 +1,107 @@
+.print-container {
+    width: 560px;
+    height: 280px;
+    background: #ffffff;
+    box-shadow: 0px 4px 20px rgba(148, 148, 148, 0.25);
+    border-radius: 12px;
+}
+
+.nama {
+    width: 149px;
+    height: 33px;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+    margin-top: 10px;
+    /* identical to box height */
+
+    /* Black primary */
+
+    color: #514b63;
+}
+
+.foto {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 8px;
+    margin-top: 28px;
+    margin-left: 28px;
+}
+
+.nomor {
+    width: 100%;
+    height: 19px;
+
+    margin-top: 8px;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    /* identical to box height */
+
+    /* Abu primary */
+
+    color: #b0b0b0;
+}
+
+.email-print {
+    width: 100%;
+    height: 19px;
+
+    margin-top: 8px;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    /* Abu primary */
+
+    color: #b0b0b0;
+}
+
+.data {
+    width: 100%;
+    height: 16px;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+
+    /* Abu primary */
+
+    color: #b0b0b0;
+}
+
+.isi {
+    width: 100%;
+    height: 22px;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    /* Black primary */
+
+    color: #514b63;
+}
+
+.foto-visit {
+    width: 38px;
+    height: 38px;
+    border-radius: 4px;
+    background: url(.png), #c4c4c4;
+}

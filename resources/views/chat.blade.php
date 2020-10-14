@@ -4,6 +4,17 @@
     .input:focus {
         outline: none;
     }
+
+    .search-chat {
+        border: none;
+        border-radius: 1em;
+        margin-left: 0.5em;
+    }
+
+    .search-icon {
+        color: #00000066;
+        margin-top: 1em;
+    }
 </style>
 <div class="cover-container d-flex justify-content-start mx-auto">
     <div class="" style="flex: 2;">
@@ -13,17 +24,18 @@
         <div class="d-flex flex-column">
             @include('component.header', ['header_title' => 'Chat'])
             <div class="d-flex justify-content-between ml-4 mt-3">
-                <div class="mr-3" style="flex: 3;border-radius: 1em; box-shadow: 1px 0px 4px #E9E9E9; border-radius:3em;">
+                <div class="mr-3" style="flex: 3;border-radius: 1em; box-shadow: 1px 0px 4px #E9E9E9;">
                     <div class="contact-list d-flex flex-column white-bg" style="border-radius:1em;">
                         <div class="form" style="box-shadow: 0px 0px 15px rgba(221, 221, 221, 0.15);">
                             <div class="form-group mx-sm-3 mb-2 d-flex justify-content-start">
-                                <input type="text" class="form-control" placeholder="Cari">
+                                <x-feathericon-search class=" search-icon" />
+                                <input type="text" class="mt-2 search-chat form-control" placeholder="Cari">
                             </div>
                         </div>
                         <div class="overflow-auto list-user" style="box-shadow: 0px 0px 15px rgba(221, 221, 221, 0.15);">
                             @foreach($guests as $guest)
-                            <div class="d-flex justify-content-start mt-3 chat-list" onclick="showChatroom('{{ $guest->fullname}}', '{{ $guest->imageUrl}}', '{{ $guest->guestId }}', '{{ $guest->staffId }}', '{{ Auth::user()->building }}');" id="{{ $guest->guestId }}" style="margin-bottom: 1em; cursor:pointer;">
-                                <div style="flex: 2;">
+                            <div class="d-flex justify-content-start pb-1 pt-2 chat-list" onclick="showChatroom('{{ $guest->fullname}}', '{{ $guest->imageUrl}}', '{{ $guest->guestId }}', '{{ $guest->staffId }}', '{{ Auth::user()->building }}');" id="{{ $guest->guestId }}" style="margin-bottom: 0em; cursor:pointer;width:100%;border-top: 2px solid #0000001A">
+                                <div style=" flex: 2;">
                                     <img class="chat-list-image" src="{{ $guest->imageUrl }}" alt="">
                                 </div>
                                 <div class="d-flex flex-column align-content-start" style="flex: 10;">
@@ -127,7 +139,7 @@
 
     function CreateChatRoom() {
         var chatroom = '<div class="d-flex flex-column white-bg" id="chat_room" style="border-radius:1em;min-height:83.5vh;">';
-        chatroom += '<div class="d-flex justify-content-start p-3 chatting-header" style="height: 10vh;">';
+        chatroom += '<div class="d-flex justify-content-start p-3 chatting-header" style="height: 10%;">';
         chatroom += '<div style="flex: 1;">';
         chatroom += '<img class="chat-list-image" id="chat_guest_image" src="" alt="">';
         chatroom += '</div>';
@@ -139,7 +151,7 @@
         chatroom += '</div>';
         chatroom += '<div class=" chatting-input" style="border-radius:1em;">';
         chatroom += '<div class="d-flex justify-content-between  p-2">';
-        chatroom += '<textarea type="text" class="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="message" placeholder="Tulis Pesan disini..." maxlength="300" style="flex:11; border:none; outline:none; resize:none;" autocomplete="off"></textarea>';
+        chatroom += '<textarea type="text" class="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="message" placeholder="Tulis Pesan disini..." maxlength="300" style="flex:11; border:none; outline:none; resize:none;" autocomplete="off";height:100%;></textarea>';
         chatroom += '<div class="input-group-prepend justify-content-center" style="flex: 1; align-items:center;">';
         chatroom += "<div class='' id='inputGroup-sizing-default' onclick='sendMessage();'>";
         chatroom += '<x-feathericon-send class="chatting-icon-send" />';
@@ -153,7 +165,7 @@
 
     function showChatroom($guestFullname, $guestImageUrl, $guestId, $guestHostId, $building) {
         CreateChatRoom();
-        if (localStorage.getItem("prevChatroomGuestId") != null && localStorage.getItem("prevChatroomGuestHost") != null) {
+        if (localStorage.getItem("prevChatroomGuestId") != null && localStorage.getItem("prevChatroomGuestHostId") != null) {
             document.getElementById(localStorage.getItem("prevChatroomGuestId")).style.backgroundColor = "#FFFFFF";
         }
         document.getElementById('chat_guest_image').src = $guestImageUrl;
@@ -290,52 +302,58 @@
     }
 
     function sendMessage() {
-        const timestamp = Date.now().toString();
-        $building = localStorage.getItem('building');
-        var buildingCode;
-        buildingCode = setBuildingCode($building);
-        var guestId = localStorage.getItem('prevChatroomGuestId');
-        var guestHostId = localStorage.getItem('prevChatroomGuestHostId');
-        var building = localStorage.getItem('building');
         var messageContent = document.getElementById('message').value;
-        document.getElementById('message').value = '';
-        if (messageContent != null) {
-            db.collection("messages").doc(buildingCode + '-' + guestHostId + '-' + guestId).collection(buildingCode + '-' + guestHostId + '-' + guestId).doc(timestamp).set({
-                    content: messageContent,
-                    idFrom: buildingCode,
-                    idTo: guestHostId,
-                    timestamp: timestamp,
-                    type: 0
-                }).then(function() {
-                    document.getElementById('message').value = '';
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-                    $.ajax({
-                        url: "{{ route('sendNotification') }}",
-                        type: 'POST',
-                        data: {
-                            _token: CSRF_TOKEN,
-                            'staffId': guestHostId,
-                            'message': messageContent,
-                            'title': 'Admin ' + building,
-                        },
-                        success: function(data) {
-                            console.log(data);
-                        },
-                        error: function(data, textStatus, errorThrown) {
-                            console.log(data);
-                            console.log(textStatus);
-                            console.log(errorThrown);
-                            console.log("ERROR");
-                        },
+        if (messageContent == '') {
+            return null;
+        } else {
+            document.getElementById('message').value = '';
+            const timestamp = Date.now().toString();
+            $building = localStorage.getItem('building');
+            var buildingCode;
+            buildingCode = setBuildingCode($building);
+            var guestId = localStorage.getItem('prevChatroomGuestId');
+            var guestHostId = localStorage.getItem('prevChatroomGuestHostId');
+            var building = localStorage.getItem('building');
+            if (messageContent != null) {
+                db.collection("messages").doc(buildingCode + '-' + guestHostId + '-' + guestId).collection(buildingCode + '-' + guestHostId + '-' + guestId).doc(timestamp).set({
+                        content: messageContent,
+                        idFrom: buildingCode,
+                        idTo: guestHostId,
+                        timestamp: timestamp,
+                        type: 0
+                    }).then(function() {
+                        document.getElementById('message').value = '';
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.ajax({
+                            url: "{{ route('sendNotification') }}",
+                            type: 'POST',
+                            data: {
+                                _token: CSRF_TOKEN,
+                                'staffId': guestHostId,
+                                'message': messageContent,
+                                'title': 'Admin ' + building,
+                                'buildingCode': buildingCode,
+                                'guestId': guestId,
+                            },
+                            success: function(data) {
+                                console.log(data);
+                            },
+                            error: function(data, textStatus, errorThrown) {
+                                console.log(data);
+                                console.log(textStatus);
+                                console.log(errorThrown);
+                                console.log("ERROR");
+                            },
+                        })
                     })
-                })
-                .catch(function(error) {
-                    console.error("Error adding document: ", error);
-                });
+                    .catch(function(error) {
+                        console.error("Error adding document: ", error);
+                    });
+            }
         }
     }
 

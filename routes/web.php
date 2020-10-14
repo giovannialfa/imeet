@@ -34,10 +34,10 @@ Route::resource('admin', 'AdminController');
 // Route::put('admin/{id}','AdminController@edit');
 
 Route::get('/guest', 'GuestController@index')->name('guest');
-Route::delete('guests/{id}','GuestController@destroy');
-Route::get('/guest/{id}','GuestController@show');
+Route::delete('guests/{id}', 'GuestController@destroy');
+Route::get('/guest/{id}', 'GuestController@show');
 
-// Route::get('/print','GuestController@showGuest')->name('showGuest');
+Route::get('/print', 'GuestController@showGuest')->name('showGuest');
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
@@ -45,7 +45,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@createChat')->name('home.createChat');
-Route::post('sendNotification','HomeController@sendNotification')->name('sendNotification');
+Route::post('sendNotification', 'HomeController@sendNotification')->name('sendNotification');
 
 Route::get('/chat', 'HomeController@chat')->name('chat');
 

@@ -18,7 +18,6 @@ class GuestController extends Controller
         $guests = Guest::all();
 
         if ($keyword) {
-        
         }
 
         return view('guest.index', \compact('guests'));
@@ -55,8 +54,7 @@ class GuestController extends Controller
     {
         $guest = Guest::all();
         $guest = Guest::find($id);
-        return view('guest.show',compact('guest'));
-
+        return view('guest.show', compact('guest'));
     }
 
     /**

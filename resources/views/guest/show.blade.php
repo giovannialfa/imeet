@@ -25,11 +25,13 @@
         font-weight: 600;
         color: #514B63;
     }
-    .page-link{
+
+    .page-link {
         color: #44BBA0;
         background: #FFFFFF;
         border-color: #dee2e6
     }
+
     .page-item.active .page-link {
         z-index: 3;
         color: #44BBA0;
@@ -50,7 +52,7 @@
             <div class="d-inline-flex ml-3 mt-2">
                 <a href="{{url("guest")}}">
                     <button class="btn">
-                        <x-feathericon-arrow-left  />
+                        <x-feathericon-arrow-left />
                     </button>
                 </a>
                 <div class="d-flex align-items-center kembali">Kembali</div>
@@ -60,8 +62,8 @@
                     <div class="d-flex flex-column white-bg p-3">
                         <div class="title-content mb-3">Data Kunjungan</div>
                         <div class="d-flex flex-row bd-highlight mb-2">
-                            <div class="p-2 bd-highlight" style="margin-right: 40%;">
-                                <div class="data" style="margin-top: 1em;">Nama Lengkap</div>
+                            <div class="p-2 bd-highlight text-left" style="margin-right: 30%;">
+                                <div class="data align-self-start" style="margin-top: 1em;">Nama Lengkap</div>
                                 <div class="id">{{ $guest->fullname }}</div>
                                 <div class="data" style="margin-top: 1em;">Perusahaan</div>
                                 <div class="id">{{ $guest->company }}</div>
@@ -74,7 +76,7 @@
                                 <div class="data" style="margin-top: 1em;">Keperluan</div>
                                 <div class="id">{{ $guest->nesessity }}</div>
                             </div>
-                            <div class="p-2 bd-highlight ">
+                            <div class="p-2 bd-highlight text-left">
                                 <div class="data" style="margin-top: 1em;">Tipe</div>
                                 <div class="id">{{ $guest->type }}</div>
                                 <div class="data" style="margin-top: 1em;">waktu</div>
@@ -87,7 +89,7 @@
                 </div>
                 <div class="" style="flex:3;">
                     <div class="d-flex flex-column white-bg p-3">
-                        <div class="title-content mb-3">Foto Kunjungan</div>
+                        <div class="title-content mb-4">Foto Pengunjung</div>
                         <img class="chat-list-image" id="chat_guest_image" src="{{ $guest->imageUrl }}" alt="" style="width: 100%; height: 100%;">
                     </div>
                 </div>

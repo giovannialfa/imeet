@@ -232,15 +232,18 @@
                                                 <x-feathericon-x-circle class="sidebar-icon" style="color: #F68059;" />
                                             </div>
                                         </div>
-
-                                        <button class="test-button printPage d-none" href="http://127.0.0.1:8000/print">Cetak</button>
+                                        <a href="http://127.0.0.1:8000/print">
+                                            <button class="test-button printPage d-none">Cetak</button></a>
                                         <div class='test-text d-none'>
                                             Ditolak
                                         </div>
                                         @elseif($guest->status =='Accepted')
-                                        <button class='test-button printPage' href="http://127.0.0.1:8000/print">
-                                            Cetak
-                                        </button>
+                                        <a href="http://127.0.0.1:8000/print">
+
+                                            <button class='test-button printPage'>
+                                                Cetak
+                                            </button>
+                                        </a>
                                         @elseif($guest->status =='Rejected')
                                         <div class='test-text'>
                                             Ditolak
@@ -375,19 +378,20 @@
     // })
 
     //print
-    $('button.printPage').click(function() {
-        // window.print();
-        // return false;
-        var prtContent = document.getElementById("print_page");
-        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-        WinPrint.document.write(prtContent.innerHTML);
-        WinPrint.document.close();
-        WinPrint.focus();
-        WinPrint.print();
-        WinPrint.close();
+    // $('button.printPage').click(function() {
+    //     window.print();
+    //     return false;
+    //     // var prtContent = document.getElementById("print_page");
+    //     // var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+    //     // WinPrint.document.write(prtContent.innerHTML);
+    //     // WinPrint.document.close();
+    //     // WinPrint.focus();
+    //     // WinPrint.print();
+    //     // WinPrint.close();
 
-        button.classList.remove('d-none')
-    });
+    //     // button.classList.remove('d-none')
+    // });
+
 
 
     function accept(event) {
@@ -413,59 +417,3 @@
     // }
 </script>
 @endsection
-<!-- {{--<main>
-        <div class="row">
-            <div class="col-md-2 pr-0">
-            </div>
-            <div class="col-md-7">
-                <div class="container-fluid">
-                    <div class="row">
-                        
-                        <div class="col-md-6" id="page-content-wrapper">
-                            <h1 class="mt-4" style="color: #75B79E;">Dashboard</h1>
-                            <div class="container-fluid" style="font-family: Open Sans;font-style: normal;font-weight: bold;">
-                                <h3 class="mt-5">Daftar Kunjungan</h3>
-                                <table class="table">
-                                    <thead>
-                                        <tr style="color: #B0B0B0;">
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Tipe</th>
-                                            <th scope="col">Tujuan</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="background: #F8FFF8;">
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3" style="background-color: white;">
-                Chart
-            </div>
-        </div>
-    </main>--}} -->
